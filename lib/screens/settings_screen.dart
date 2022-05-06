@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../main.dart';
 import '../navbar.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -55,7 +57,14 @@ class SettingsScreen extends StatelessWidget {
                   focusNode: _ageFocusNode,
                 ),
                 TextButton(
-                  onPressed: () => _formKey.currentState?.save(),
+                  //Чтобы передать данные, нам нужно будет получить доступ к Provider нашему методу, который был передан в Data классе. Пересмотрите settings_screen.dart
+
+                  //To pass data up, we will need to access the Provider use our method that was passed down in the Data class. Revisit settings_screen.dart:
+                  onPressed: () {
+                    _formKey.currentState?.save();
+                    Provider.of<Data>(context, listen: false).updateAccount(data);
+                    _formKey.currentState?.reset();
+                  },
                   child: const Text('Submit'),
                   style: TextButton.styleFrom(
                     primary: Colors.white,

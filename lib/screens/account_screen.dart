@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../main.dart';
 import '../navbar.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -23,9 +24,11 @@ class AccountScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  <Widget> [
-            Text('Name: ' + Provider.of<Map>(context)['name'].toString()),
-            Text('Email: ' + Provider.of<Map>(context)['email']),
-            Text('Age: ' + Provider.of<Map>(context)['age'].toString()),
+           // Поскольку мы изменили наш Provider тип, нам нужно обновить наши вызовы к нему. Пересмотрите account_screen.dart:
+           //Since we changed our Provider type, we need to update our calls to it. Revisit account_screen.dart:
+            Text('Name: ' + Provider.of<Data>(context).data['name'].toString()),
+            Text('Email: ' + Provider.of<Data>(context).data['email']),
+            Text('Age: ' + Provider.of<Data>(context).data['age'].toString()),
           ],
         ),
       ),
