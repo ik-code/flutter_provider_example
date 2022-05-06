@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../navbar.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -8,6 +9,9 @@ class AccountScreen extends StatelessWidget {
 
   const AccountScreen({Key? key}) : super(key: key);
 
+//Revisit account_screen.dart
+// add package provider for this screen 
+// add Provider.of<Map>(context)['somedata'].toString() for each line
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +22,10 @@ class AccountScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget> [
-            Text('Name: '),
-            Text('Email: '),
-            Text('Age: '),
+          children:  <Widget> [
+            Text('Name: ' + Provider.of<Map>(context)['name'].toString()),
+            Text('Email: ' + Provider.of<Map>(context)['email']),
+            Text('Age: ' + Provider.of<Map>(context)['age'].toString()),
           ],
         ),
       ),
